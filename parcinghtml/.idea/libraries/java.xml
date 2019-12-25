@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="java">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/remark-1.0.0-SNAPSHOT-standalone.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Desktop/markdownj-master.zip!/markdownj-master/core/src/main/java" />
+      <root url="jar://$USER_HOME$/Desktop/markdownj-master.zip!/markdownj-master/core/src/test/java" />
+    </SOURCES>
+  </library>
+</component>
