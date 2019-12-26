@@ -1,0 +1,38 @@
+
+[img alt="СССССССССССССС"]https://user32265.clients-cdnnow.ru/localStorage/post/da/2c/8a/4a/da2c8a4a_resizedScaled_740to803.jpg[/img]Idiy
+[size=27]Заголовок1[/size]
+
+[size=25]Заголовок2[/size]
+
+[b]Жирный[/b]
+[i]Курсив[/i]
+[b][i]Жирный Курсив[/i][/b]
+[URL=https://www.google.com/][b][i]Google[/i][/b][/URL]
+
+[ul]
+	[li]точка 1[/li]
+	[li]точка 2[/li]
+	[li]точка 3[/li]
+[/ul]
+[ol]
+	[li]пункт 1[/li]
+	[li]пункт 2[/li]
+	[li][ol]
+	[li]подпункт 1[/li]
+	[li]подпункт 2[/li]
+[/ol][/li]
+	[li]Пункт 4[/li]
+[/ol]
+[code]
+class Visitor implements NodeVisitor {
+private ListType currentListType;
+//    private int CountInt = 1;
+private Stack < Integer > listCounters = new Stack<>(); // Стак, отвечающий за вложенность списков.
+private OutputType outputType;
+private StringBuilder result = new StringBuilder();
+public Visitor(OutputType outputType) {
+this.outputType = outputType;[/code]
+
+[quote][i]Хотели сделать хорошо, а получилось как обычно.[/i][/quote]
+[u]Почеркивание[/u]
+[s]Зачеркивание[/s]
