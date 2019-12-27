@@ -2,7 +2,6 @@ package org.markdownj;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.NodeVisitor;
@@ -158,140 +157,140 @@ class TranslationalVisitor implements NodeVisitor {
             result.append(translator.head(node, i));
         }
         //--------------------------------------------------------------------------------
-
-        if (node instanceof Element) {
-            switch (node.nodeName().toLowerCase()) {
-                case "code": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append("\n```\n");
-                    else if (outputType == OutputType.BBCode)
-                        result.append("[code]\n");
-                    break;
-                }
-
-                case "color": {
-                    if (outputType == OutputType.BBCode)
-                        result.append("[color=").append(node.attr("color")).append("]");
-                    break;
-                }
-                case "ul": {
-                    if (outputType == OutputType.MarkDown)
-                        currentListType = ListType.UnOrderedList;
-                    else if (outputType == OutputType.BBCode) {
-                        currentListType = ListType.UnOrderedList;
-                        result.append("[ul]\n");
-                    }
-                    break;
-                }
-                case "ol": {
-//                        CountInt = 1;
-                    listCounters.push(0);
-                    if (outputType == OutputType.MarkDown)
-                        currentListType = ListType.OrderedList;
-                    else if (outputType == OutputType.BBCode) {
-                        currentListType = ListType.OrderedList;
-                        result.append("[ol]\n");
-                    }
-                    break;
-                }
-                case "li": {
-                    if (outputType == OutputType.MarkDown) {
-                        if (currentListType == ListType.UnOrderedList)
-                            result.append("* ");
-                        else if (currentListType == ListType.OrderedList) {
-                            result.append("\t".repeat(listCounters.size() - 1))
-                                    .append(incrementTheMostNestedCounter())
-                                    .append(". ");
-//                                result.append(CountInt++).append(". ");
-                        }
-                    } else if (outputType == OutputType.BBCode) {
-                        result.append("\t[li]");
-                    }
-                    break;
-                }
-
-                case "h1": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append("#");
-                    else if (outputType == OutputType.BBCode)
-                        result.append("[size=27]");
-                    break;
-                }
-                case "h2": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append("##");
-                    else if (outputType == OutputType.BBCode)
-                        result.append("[size=25]");
-                    break;
-                }
-                case "h3": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append("###");
-                    else if (outputType == OutputType.BBCode)
-                        result.append("[size=23]");
-                    break;
-                }
-
-                case "blockquote": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append(">");
-                    else if (outputType == OutputType.BBCode)
-                        result.append("[quote]");
-                    break;
-                }
-
-                case "b": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append("**");
-                    else if (outputType == OutputType.BBCode)
-                        result.append("[b]");
-                    break;
-                }
-                case "i": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append("_");
-                    else if (outputType == OutputType.BBCode)
-                        result.append("[i]");
-                    break;
-                }
-                case "u": {
-                    if (outputType == OutputType.BBCode)
-                        result.append("[u]");
-                    break;
-                }
-                case "s": {
-                    if (outputType == OutputType.BBCode)
-                        result.append("[s]");
-                    else if (outputType == OutputType.MarkDown)
-                        result.append("~~");
-                    break;
-                }
-                case "img": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append("![");
-                    else if (outputType == OutputType.BBCode)
-                        result.append("[img alt=\"");
-                    break;
-                }
-                case "a": {
-                    if (outputType == OutputType.MarkDown) {
-                        if (node.hasAttr("href")) {
-                            result.append("[");
-                        }
-                    } else if (outputType == OutputType.BBCode)
-                        result.append("[URL=").append(node.attr("href")).append("]");
-                    break;
-                }
-                case "br": {
-                    result.append("\n");
-                    break;
-                }
-
-                default: {
-                }
-            }
-        }
-    }
+//
+//        if (node instanceof Element) {
+//            switch (node.nodeName().toLowerCase()) {
+//                case "code": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append("\n```\n");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append("[code]\n");
+//                    break;
+//                }
+//
+//                case "color": {
+//                    if (outputType == OutputType.BBCode)
+//                        result.append("[color=").append(node.attr("color")).append("]");
+//                    break;
+//                }
+//                case "ul": {
+//                    if (outputType == OutputType.MarkDown)
+//                        currentListType = ListType.UnOrderedList;
+//                    else if (outputType == OutputType.BBCode) {
+//                        currentListType = ListType.UnOrderedList;
+//                        result.append("[ul]\n");
+//                    }
+//                    break;
+//                }
+//                case "ol": {
+////                        CountInt = 1;
+//                    listCounters.push(0);
+//                    if (outputType == OutputType.MarkDown)
+//                        currentListType = ListType.OrderedList;
+//                    else if (outputType == OutputType.BBCode) {
+//                        currentListType = ListType.OrderedList;
+//                        result.append("[ol]\n");
+//                    }
+//                    break;
+//                }
+//                case "li": {
+//                    if (outputType == OutputType.MarkDown) {
+//                        if (currentListType == ListType.UnOrderedList)
+//                            result.append("* ");
+//                        else if (currentListType == ListType.OrderedList) {
+//                            result.append("\t".repeat(listCounters.size() - 1))
+//                                    .append(incrementTheMostNestedCounter())
+//                                    .append(". ");
+////                                result.append(CountInt++).append(". ");
+//                        }
+//                    } else if (outputType == OutputType.BBCode) {
+//                        result.append("\t[li]");
+//                    }
+//                    break;
+//                }
+//
+//                case "h1": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append("#");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append("[size=27]");
+//                    break;
+//                }
+//                case "h2": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append("##");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append("[size=25]");
+//                    break;
+//                }
+//                case "h3": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append("###");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append("[size=23]");
+//                    break;
+//                }
+//
+//                case "blockquote": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append(">");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append("[quote]");
+//                    break;
+//                }
+//
+//                case "b": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append("**");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append("[b]");
+//                    break;
+//                }
+//                case "i": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append("_");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append("[i]");
+//                    break;
+//                }
+//                case "u": {
+//                    if (outputType == OutputType.BBCode)
+//                        result.append("[u]");
+//                    break;
+//                }
+//                case "s": {
+//                    if (outputType == OutputType.BBCode)
+//                        result.append("[s]");
+//                    else if (outputType == OutputType.MarkDown)
+//                        result.append("~~");
+//                    break;
+//                }
+//                case "img": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append("![");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append("[img alt=\"");
+//                    break;
+//                }
+//                case "a": {
+//                    if (outputType == OutputType.MarkDown) {
+//                        if (node.hasAttr("href")) {
+//                            result.append("[");
+//                        }
+//                    } else if (outputType == OutputType.BBCode)
+//                        result.append("[URL=").append(node.attr("href")).append("]");
+//                    break;
+//                }
+//                case "br": {
+//                    result.append("\n");
+//                    break;
+//                }
+//
+//                default: {
+//                }
+//            }
+//        }
+     }
 
 
     @Override
@@ -302,106 +301,107 @@ class TranslationalVisitor implements NodeVisitor {
             result.append(translator.tail(node, i));
         }
 //        -------------------------------------------------------
-        if (node instanceof Element) {
-            switch (node.nodeName().toLowerCase()) {
-                case "code": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append("\n```\n");
-                    else if (outputType == OutputType.BBCode)
-                        result.append("[/code]\n");
-                    break;
-                }
-                case "color": {
-                    if (outputType == OutputType.BBCode)
-                        result.append(")[/color]");
-                    break;
-                }
-                case "blockquote": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append("\n\n");
-                    else if (outputType == OutputType.BBCode)
-                        result.append("[/quote]");
-                    break;
-                }
-                case "h1":
-                case "h2":
-                case "h3": {
-                    if (outputType == OutputType.BBCode)
-                        result.append("[/size]\n");
-                    break;
-                }
-                case "ul": {
-                    if (outputType == OutputType.BBCode) {
-                        currentListType = ListType.UnOrderedList;
-                        result.append("[/ul]");
-                    }
-                    break;
-                }
-                case "ol": {
-                    listCounters.pop();
-                    if (outputType == OutputType.BBCode) {
-                        currentListType = ListType.OrderedList;
-                        result.append("[/ol]");
-                    }
-                    break;
-                }
-                case "li": {
-                    if (outputType == OutputType.BBCode) {
-                        result.append("[/li]");
-                    }
-                    result.append("\n");
-                    break;
-                }
-                case "b": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append("**");
-                    else if (outputType == OutputType.BBCode)
-                        result.append("[/b]");
-                    break;
-                }
-                case "i": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append("_");
-                    else if (outputType == OutputType.BBCode)
-                        result.append("[/i]");
-                    break;
-                }
-                case "u": {
-                    if (outputType == OutputType.BBCode)
-                        result.append("[/u]");
-                    break;
-                }
-                case "s": {
-                    if (outputType == OutputType.BBCode)
-                        result.append("[/s]");
-                    else if (outputType == OutputType.MarkDown)
-                        result.append("~~");
-                    break;
-                }
-                case "img": {
-                    if (outputType == OutputType.MarkDown)
-                        result.append(node.attr("alt"))
-                                .append("](")
-                                .append(node.attr("src"))
-                                .append(")");
-                    else if (outputType == OutputType.BBCode)
-                        result.append(node.attr("alt"))
-                                .append("\"]")
-                                .append(node.attr("src"))
-                                .append("[/img]");
-                    break;
-                }
-
-                case "a": {
-                    if (outputType == OutputType.MarkDown) {
-                        if (node.hasAttr("href")) {
-                            result.append("](").append(node.attr("href")).append(")\n");
-                        }
-                    } else if (outputType == OutputType.BBCode)
-                        result.append("[/URL]\n");
-                    break;
-                }
-            }
-        }
+//        if (node instanceof Element) {
+//            switch (node.nodeName().toLowerCase()) {
+//                case "code": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append("\n```\n");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append("[/code]\n");
+//                    break;
+//                }
+//                case "color": {
+//                    if (outputType == OutputType.BBCode)
+//                        result.append(")[/color]");
+//                    break;
+//                }
+//                case "blockquote": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append("\n\n");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append("[/quote]");
+//                    break;
+//                }
+//                case "h1":
+//                case "h2":
+//                case "h3": {
+//                    if (outputType == OutputType.BBCode)
+//                        result.append("[/size]\n");
+//                    break;
+//                }
+//                case "ul": {
+//                    if (outputType == OutputType.BBCode) {
+//                        currentListType = ListType.UnOrderedList;
+//                        result.append("[/ul]");
+//                    }
+//                    break;
+//                }
+//                case "ol": {
+//                    listCounters.pop();
+//                    if (outputType == OutputType.BBCode) {
+//                        currentListType = ListType.OrderedList;
+//                        result.append("[/ol]");
+//                    }
+//                    break;
+//                }
+//                case "li": {
+//                    if (outputType == OutputType.BBCode) {
+//                        result.append("[/li]");
+//                    }
+//                    result.append("\n");
+//                    break;
+//                }
+//                case "b": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append("**");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append("[/b]");
+//                    break;
+//                }
+//                case "i": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append("_");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append("[/i]");
+//                    break;
+//                }
+//                case "u": {
+//                    if (outputType == OutputType.BBCode)
+//                        result.append("[/u]");
+//                    break;
+//                }
+//                case "s": {
+//                    if (outputType == OutputType.BBCode)
+//                        result.append("[/s]");
+//                    else if (outputType == OutputType.MarkDown)
+//                        result.append("~~");
+//                    break;
+//                }
+//                case "img": {
+//                    if (outputType == OutputType.MarkDown)
+//                        result.append(node.attr("alt"))
+//                                .append("](")
+//                                .append(node.attr("src"))
+//                                .append(")");
+//                    else if (outputType == OutputType.BBCode)
+//                        result.append(node.attr("alt"))
+//                                .append("\"]")
+//                                .append(node.attr("src"))
+//                                .append("[/img]");
+//                    break;
+//                }
+//
+//                case "a": {
+//                    if (outputType == OutputType.MarkDown) {
+//                        if (node.hasAttr("href")) {
+//                            result.append("](").append(node.attr("href")).append(")\n");
+//                        }
+//                    } else if (outputType == OutputType.BBCode)
+//                        result.append("[/URL]\n");
+//                    break;
+//                }
+//            }
+//        }
+//    }
     }
 }
