@@ -7,12 +7,12 @@ public class CodeMD implements Visitor {
 
     @Override
     public String head(Node var1, int var2) {
-        return "```";
+        return "```\n";
     }
 
     @Override
     public String tail(Node var1, int var2) {
-        return "```";
+        return "\n```";
     }
 
     @Override

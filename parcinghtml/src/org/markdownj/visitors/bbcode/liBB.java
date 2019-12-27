@@ -11,7 +11,7 @@ public class liBB implements Visitor {
 
     @Override
     public String tail(Node node, int i) {
-        return "[/li]";
+        return "[/li]\n";
     }
 
     @Override

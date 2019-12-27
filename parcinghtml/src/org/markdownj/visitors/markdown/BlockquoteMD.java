@@ -11,7 +11,7 @@ public class BlockquoteMD implements Visitor {
 
     @Override
     public String tail(Node var1, int var2) {
-        return null;
+        return "\n";
     }
 
     @Override

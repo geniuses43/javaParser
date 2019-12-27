@@ -6,12 +6,12 @@ import org.markdownj.visitors.Visitor;
 public class OlMD implements Visitor {
     @Override
     public String head(Node var1, int var2) {
-        return "* ";
+        return "";
     }
 
     @Override
     public String tail(Node var1, int var2) {
-        return null;
+        return "";
     }
 
     @Override

@@ -3,10 +3,10 @@ package org.markdownj.visitors.markdown;
 import org.jsoup.nodes.Node;
 import org.markdownj.visitors.Visitor;
 
-public class Heading3MD implements Visitor {
+public class UlMD implements Visitor {
     @Override
     public String head(Node var1, int var2) {
-        return "###";
+        return "";
     }
 
     @Override
@@ -16,6 +16,6 @@ public class Heading3MD implements Visitor {
 
     @Override
     public String getTag() {
-        return "h3";
+        return "ul";
     }
 }

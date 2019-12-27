@@ -9,7 +9,7 @@ public class LinksMD implements Visitor {
         if (var1.hasAttr("href")){
             return "[";
         }
-        else return null;
+        else return "";
     }
 
     @Override
@@ -19,7 +19,7 @@ public class LinksMD implements Visitor {
                     + var1.attr("href")
                     + ")\n";
         }
-        else return null;
+        else return "";
     }
 
     @Override
